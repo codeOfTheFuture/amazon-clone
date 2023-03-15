@@ -1,7 +1,11 @@
-export default function Home() {
+import Header from "./components/Header";
+
+const Home = () => {
   return (
-    <main>
-      <h1>Amazon Clone</h1>
-    </main>
+    <div>
+      <Header />
+    </div>
   );
-}
+};
+
+export default Home;
