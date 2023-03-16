@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header>
       <div className="flex items-center flex-grow bg-amazon_blue px-1 py-2">
-        <div className="flex items-center mt-2 flex-grow sm:flex-grow-0">
+        <div className="flex items-center mt-2 mx-6 flex-grow md:flex-grow-0">
           <Image
             src={logo}
             alt="Amazon logo"
@@ -20,9 +20,9 @@ const Header = () => {
           />
         </div>
 
-        <div className="hidden sm:flex items-center h-10 rounded-md flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500">
+        <div className="hidden md:flex items-center h-10 rounded-md flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500">
           <input
-            className="px-4 py-2 w-6 h-full flex-grow flex-shrink rounded-l-md focus:outline-none"
+            className="px-4 py-2 w-6 h-full flex-grow rounded-l-md focus:outline-none"
             type="text"
           />
           <SearchIcon className="h-12 p-4" />
@@ -50,7 +50,21 @@ const Header = () => {
         </div>
       </div>
 
-      <div></div>
+      <div className="flex items-center space-x-3 p-2 pl-6 bg-amazon_blue-light text-white text-sm">
+        <p className="link flex items-center">
+          <MenuIcon className="h-6 mr-1" />
+          All
+        </p>
+        <p className="link">Prime Video</p>
+        <p className="link">Amazon Business</p>
+        <p className="link">Today&apos;s Deals</p>
+        <p className="link hidden lg:inline-flex">Electronics</p>
+        <p className="link hidden lg:inline-flex">Food & Grocery</p>
+        <p className="link hidden lg:inline-flex">Prime</p>
+        <p className="link hidden lg:inline-flex">Buy Again</p>
+        <p className="link hidden lg:inline-flex">Shopper Toolkit</p>
+        <p className="link hidden lg:inline-flex">Health & Personal Care</p>
+      </div>
     </header>
   );
 };
