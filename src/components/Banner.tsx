@@ -3,9 +3,9 @@ import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import BannerImage_1 from "../assets/banner-image-1.jpg";
-import BannerImage_2 from "../assets/banner-image-2.jpg";
-import BannerImage_3 from "../assets/banner-image-3.jpg";
+import BannerImage_1 from "@/assets/banner-image-1.jpg";
+import BannerImage_2 from "@/assets/banner-image-2.jpg";
+import BannerImage_3 from "@/assets/banner-image-3.jpg";
 
 const Banner = () => {
   return (
