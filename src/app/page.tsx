@@ -15,8 +15,6 @@ const Home = async () => {
 
       <main className="max-w-screen-2xl mx-auto">
         <Banner />
-
-        {/* Product Feed */}
         <ProductFeed products={products} />
       </main>
     </div>

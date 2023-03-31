@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import logo from "../assets/amazon_logo.png";
 import {
@@ -5,8 +6,13 @@ import {
   SearchIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const Header = () => {
+  const { data: session } = useSession();
+  const user = session?.user;
+  console.log("user>>>", user);
+
   return (
     <header>
       <div className="flex items-center flex-grow bg-amazon_blue px-1 py-2">
@@ -24,13 +30,16 @@ const Header = () => {
           <input
             className="px-4 py-2 w-6 h-full flex-grow rounded-l-md focus:outline-none"
             type="text"
+            placeholder="Search Amazon..."
           />
           <SearchIcon className="h-12 p-4" />
         </div>
 
         <div className="flex items-center text-white text-xs space-x-6 mx-6 whitespace-nowrap">
-          <div className="link">
-            <p>Hello Jeffrey Oliver</p>
+          <div
+            onClick={() => (session ? signOut() : signIn())}
+            className="link">
+            <p>{`Hello, ${session ? session.user?.name : "sign in"}`}</p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
           <div className="link">
