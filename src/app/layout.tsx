@@ -1,4 +1,5 @@
-import { Providers } from "./providers";
+import { Providers as AuthProviders } from "@/app/providers";
+import { Provider } from "@/redux/provider";
 import { ReactNode } from "react";
 
 import "@/globals.css";
@@ -15,7 +16,9 @@ const RootLayout = async ({ children }: Props) => {
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <AuthProviders>
+          <Provider>{children}</Provider>
+        </AuthProviders>
       </body>
     </html>
   );

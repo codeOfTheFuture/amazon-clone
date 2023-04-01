@@ -3,9 +3,9 @@ import Image from "next/image";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import BannerImage_1 from "@/assets/banner-image-1.jpg";
-import BannerImage_2 from "@/assets/banner-image-2.jpg";
-import BannerImage_3 from "@/assets/banner-image-3.jpg";
+import bannerImage_1 from "@/assets/banner-image-1.jpg";
+import bannerImage_2 from "@/assets/banner-image-2.jpg";
+import bannerImage_3 from "@/assets/banner-image-3.jpg";
 
 const Banner = () => {
   return (
@@ -19,13 +19,13 @@ const Banner = () => {
         showThumbs={false}
         interval={5000}>
         <div>
-          <Image src={BannerImage_1} alt="Banner Image 1" />
+          <Image src={bannerImage_1} alt="Banner Image 1" />
         </div>
         <div>
-          <Image src={BannerImage_2} alt="Banner Image 2" />
+          <Image src={bannerImage_2} alt="Banner Image 2" />
         </div>
         <div>
-          <Image src={BannerImage_3} alt="Banner Image 3" />
+          <Image src={bannerImage_3} alt="Banner Image 3" />
         </div>
       </Carousel>
     </div>

@@ -3,6 +3,7 @@ import { Product } from "@/typings";
 import { StarIcon } from "@heroicons/react/solid";
 import { formatCurrency } from "@/utils/formatCurrency";
 import PrimeTag from "@/assets/prime-tag.png";
+import AddToBasketBtn from "./AddToBasketBtn";
 
 interface Props {
   product: Product;
@@ -52,7 +53,7 @@ const Product = ({ product }: Props) => {
         </div>
       )}
 
-      <button className="mt-auto button">Add to Basket</button>
+      <AddToBasketBtn product={product}>Add to Basket</AddToBasketBtn>
     </div>
   );
 };

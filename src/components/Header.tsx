@@ -1,22 +1,28 @@
 "use client";
 import Image from "next/image";
-import logo from "../assets/amazon_logo.png";
+import logo from "@/assets/amazon_logo.png";
 import {
   MenuIcon,
   SearchIcon,
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/redux/hooks";
+import { selectItems } from "@/redux/slices/basketSlice";
 
 const Header = () => {
   const { data: session } = useSession();
-  const user = session?.user;
-  console.log("user>>>", user);
+  const router = useRouter();
+
+  const items = useAppSelector(selectItems);
 
   return (
     <header>
       <div className="flex items-center flex-grow bg-amazon_blue px-1 py-2">
-        <div className="flex items-center mt-2 mx-6 flex-grow md:flex-grow-0">
+        <div
+          className="flex items-center mt-2 mx-6 flex-grow md:flex-grow-0"
+          onClick={() => router.push("/")}>
           <Image
             src={logo}
             alt="Amazon logo"
@@ -46,9 +52,11 @@ const Header = () => {
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">& Orders</p>
           </div>
-          <div className="relative link flex items-center">
+          <div
+            onClick={() => router.push("/checkout")}
+            className="relative link flex items-center">
             <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold">
-              0
+              {items.length}
             </span>
 
             <ShoppingCartIcon className="h-10" />
