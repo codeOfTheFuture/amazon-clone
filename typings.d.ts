@@ -1,5 +1,6 @@
 export interface Product {
   id: number;
+  uuid: string;
   title: string;
   price: number;
   description: string;
@@ -9,4 +10,5 @@ export interface Product {
     rate: number;
     count: number;
   };
+  hasPrime: boolean;
 }

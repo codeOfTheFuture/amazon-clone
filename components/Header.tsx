@@ -36,7 +36,7 @@ const Header = () => {
           <input
             className="px-4 py-2 w-6 h-full flex-grow rounded-l-md focus:outline-none"
             type="text"
-            placeholder="Search Amazon..."
+            placeholder="Search Amazon"
           />
           <SearchIcon className="h-12 p-4" />
         </div>

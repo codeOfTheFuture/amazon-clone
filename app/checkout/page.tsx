@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import Image from "next/image";
 
 import primeDayBanner from "@/assets/prime-day-banner.webp";
+import CheckoutHeading from "@/app/checkout/components/CheckoutHeading";
+import BasketItems from "./components/BasketItems";
 
 const Checkout = () => {
   return (
@@ -20,7 +22,9 @@ const Checkout = () => {
           />
 
           <div className="flex flex-col p-5 space-y-10 bg-white">
-            <h1 className="text-3xl border-b pb-4">Your Shopping Basket</h1>
+            <CheckoutHeading />
+
+            <BasketItems />
           </div>
         </div>
 
