@@ -5,23 +5,23 @@ import { ReactNode } from "react";
 import "@/globals.css";
 
 export const metadata = {
-  title: "Amazon Clone. Spend less. Smile More.",
+	title: "Amazon Clone. Spend less. Smile More.",
 };
 
 interface Props {
-  children: ReactNode;
+	children: ReactNode;
 }
 
-const RootLayout = async ({ children }: Props) => {
-  return (
-    <html lang="en">
-      <body>
-        <AuthProviders>
-          <Provider>{children}</Provider>
-        </AuthProviders>
-      </body>
-    </html>
-  );
+const RootLayout = ({ children }: Props) => {
+	return (
+		<html lang="en">
+			<body>
+				<AuthProviders>
+					<Provider>{children}</Provider>
+				</AuthProviders>
+			</body>
+		</html>
+	);
 };
 
 export default RootLayout;

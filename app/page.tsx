@@ -5,7 +5,7 @@ import { Product } from "@/typings";
 
 const ENDPOINT = "https://fakestoreapi.com/products";
 
-const Home = async () => {
+const HomePage = async () => {
 	const response = await fetch(ENDPOINT);
 	const products: Product[] = await response.json();
 
@@ -21,4 +21,4 @@ const Home = async () => {
 	);
 };
 
-export default Home;
+export default HomePage;
