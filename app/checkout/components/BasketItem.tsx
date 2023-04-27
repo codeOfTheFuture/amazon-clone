@@ -61,8 +61,18 @@ const BasketItem = ({ product }: Props) => {
 			</div>
 
 			<div className="flex flex-col justify-end space-y-2 my-auto">
-				<Button onClick={addItemToBasket}>Add to Basket</Button>
-				<Button onClick={removeItemFromBasket}>Remove from Basket</Button>
+				<Button
+					className="button button-active-color mt-auto"
+					onClick={addItemToBasket}
+				>
+					Add to Basket
+				</Button>
+				<Button
+					className="button button-active-color mt-auto"
+					onClick={removeItemFromBasket}
+				>
+					Remove from Basket
+				</Button>
 			</div>
 		</div>
 	);

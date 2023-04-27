@@ -1,5 +1,4 @@
 "use client";
-
 import { useAppSelector } from "@/redux/hooks";
 import { selectItems } from "@/redux/slices/basketSlice";
 import BasketItem from "@/app/checkout/components/BasketItem";

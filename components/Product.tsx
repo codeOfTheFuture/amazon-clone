@@ -58,7 +58,12 @@ const Product = ({ product }: Props) => {
 				</div>
 			)}
 
-			<Button onClick={addItemToBasket}>Add to Basket</Button>
+			<Button
+				className="button button-active-color mt-auto"
+				onClick={addItemToBasket}
+			>
+				Add to Basket
+			</Button>
 		</div>
 	);
 };
