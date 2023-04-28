@@ -6,6 +6,7 @@ const nextConfig = {
   images: {
     domains: ["fakestoreapi.com"],
   },
+  basePath: ""
 };
 
 module.exports = nextConfig;

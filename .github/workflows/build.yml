@@ -1,0 +1,56 @@
+name: Vercel Preview/Production Deployments
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm install
+      - name: Check linting
+        run: npm run lint
+      - name: Run tests
+        run: npm run test:ci
+      - name: Build Project
+        run: npm run build
+  deploy:
+    needs: build
+    if: github.repository_owner == 'codeOfTheFuture' && (github.event.pull_request.head.repo.full_name == github.repository || github.event_name == 'push')
+    runs-on: ubuntu-latest
+    permissions:
+      deployments: write
+    steps:
+      - name: Start deployment
+        uses: bobheadxi/deployments@v1
+        id: deployment
+        with:
+          step: start
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: ${{ fromJSON('["Production", "Preview"]')[github.ref != 'refs/heads/main'] }}
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Vercel Action
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: ${{ fromJSON('["--prod", ""]')[github.ref != 'refs/heads/main'] }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+          working-directory: ./
+      - name: Update deployment status
+        uses: bobheadxi/deployments@v1
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          env: ${{ fromJSON('["Production", "Preview"]')[github.ref != 'refs/heads/main'] }}

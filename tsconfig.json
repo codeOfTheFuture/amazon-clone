@@ -20,7 +20,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     }
   },
   "include": [
@@ -29,7 +29,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "firebase.js",
-    "firebase.js"
+    "firebase.js",
+    "./jest.setup.ts"
   ],
   "exclude": ["node_modules"]
 }
