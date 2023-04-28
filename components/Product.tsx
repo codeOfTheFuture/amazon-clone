@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { Product } from "@/typings";
 import { formatCurrency } from "@/utils/formatCurrency";
-import Button from "@/components/Button";
+import Button from "@/components/ButtonWrapper";
 import ProductRating from "@/components/ProductRating";
 import { addToBasket } from "@/redux/slices/basketSlice";
 import { useAppDispatch } from "@/redux/hooks";
@@ -24,7 +24,11 @@ const Product = ({ product }: Props) => {
 	};
 
 	return (
-		<div className="relative flex flex-col m-5 p-10 bg-white z-30">
+		<div
+			className="relative flex flex-col m-5 p-10 bg-white z-30"
+			data-testid="product"
+			role="product"
+		>
 			<p className="absolute top-2 right-2 text-xs italic text-gray-400">
 				{product.category}
 			</p>

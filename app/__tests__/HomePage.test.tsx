@@ -27,7 +27,7 @@ describe("HomePage", () => {
 		fetchMock.resetMocks();
 	});
 
-	it("renders without crashing", async () => {
+	test("renders without crashing", async () => {
 		nextAuthReactMocked.useSession.mockImplementation(
 			(_options?: nextAuthReact.UseSessionOptions<boolean> | undefined) => {
 				return { data: null, status: "loading" };

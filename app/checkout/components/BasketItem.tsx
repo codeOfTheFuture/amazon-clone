@@ -7,7 +7,7 @@ import { formatCurrency } from "@/utils/formatCurrency";
 import { addToBasket, removeFromBasket } from "@/redux/slices/basketSlice";
 import { useAppDispatch } from "@/redux/hooks";
 import primeTag from "@/assets/prime-tag.png";
-import Button from "@/components/Button";
+import Button from "@/components/ButtonWrapper";
 
 interface Props {
 	product: Product;

@@ -1,5 +1,5 @@
 import { Product } from "@/typings";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 
 interface BasketState {

@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { useAppSelector } from "@/redux/hooks";
 import { selectItems, selectTotal } from "@/redux/slices/basketSlice";
 import { formatCurrency } from "@/utils/formatCurrency";
-import Button from "@/components/Button";
+import Button from "@/components/ButtonWrapper";
 
 const Checkout = () => {
 	const sessionStatus = useSession().status;
