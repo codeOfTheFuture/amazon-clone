@@ -2,7 +2,7 @@
 import Logo from "@/components/header/Logo";
 import SearchBar from "@/components/header/SearchBar";
 import AuthLinks from "@/components/header/AuthLinks";
-import Basket from "@/components/header/Basket";
+import BasketLink from "@/components/header/BasketLink";
 import NavLinks from "./NavLinks";
 
 const Header = () => {
@@ -13,7 +13,7 @@ const Header = () => {
 				<SearchBar />
 				<div className="flex items-center text-white text-xs space-x-6 mx-6 whitespace-nowrap">
 					<AuthLinks />
-					<Basket />
+					<BasketLink />
 				</div>
 			</div>
 

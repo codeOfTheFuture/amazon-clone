@@ -12,7 +12,6 @@ const CheckoutPage = () => {
 			<Header />
 
 			<main className="lg:flex max-w-screen-2xl mx-auto">
-				{/* Left */}
 				<div className="flex-grow m-5 shadow-sm">
 					<Image
 						src={primeDayBanner}
@@ -24,7 +23,6 @@ const CheckoutPage = () => {
 
 					<div className="flex flex-col p-5 space-y-10 bg-white">
 						<CheckoutHeading />
-
 						<BasketItems />
 					</div>
 				</div>

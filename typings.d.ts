@@ -12,3 +12,16 @@ export interface Product {
 	};
 	hasPrime: boolean;
 }
+
+export interface StripeProduct {
+	quantity: number;
+	price_data: {
+		currency: string;
+		unit_amount: number;
+		product_data: {
+			name: string;
+			description: string;
+			images: string[];
+		};
+	};
+}

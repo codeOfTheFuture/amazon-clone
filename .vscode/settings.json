@@ -1,5 +1,9 @@
 {
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cSpell.words": ["fakestoreapi"]
+  "cSpell.words": [
+    "fakestoreapi",
+    "Llfv",
+    "XQGBJ"
+  ]
 }
