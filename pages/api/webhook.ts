@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { buffer } from "micro";
 import Stripe from "stripe";
 
-import { fulfillOrder } from "./firebase";
+import { fulfillOrder } from "./utils/fulfillOrder";
 
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY!;
 const STRIPE_SIGNING_SECRET = process.env.STRIPE_SIGNING_SECRET!;

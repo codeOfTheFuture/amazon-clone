@@ -4,7 +4,7 @@ interface Props {
 	rate: number;
 }
 
-const ProductRating = ({ rate }: Props) => {
+const ProductRating = ({ rate }: Props): JSX.Element => {
 	return (
 		<div className="flex" role="product-rating">
 			{Array(Math.round(rate))

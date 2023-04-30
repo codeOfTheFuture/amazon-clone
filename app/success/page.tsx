@@ -1,11 +1,15 @@
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Header from "@/components/header/Header";
 import { CheckCircleIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 
-const SuccessPage = (): JSX.Element => {
+const SuccessPage = async (): Promise<JSX.Element> => {
+	const session = await getServerSession(authOptions);
+
 	return (
 		<div className="bg-gray-100 h-screen">
-			<Header />
+			<Header session={session} />
 
 			<main className="max-w-screen-lg mx-auto">
 				<div className="flex flex-col p-10 bg-white">

@@ -5,14 +5,11 @@ import logo from "@/assets/amazon_logo.png";
 
 const Logo = () => {
 	return (
-		<Link
-			className="flex items-center mt-2 mx-6 flex-grow md:flex-grow-0"
-			href="/"
-		>
+		<Link className="flex items-center mt-2 mx-6 flex-grow md:flex-grow-0" href="/">
 			<Image
 				src={logo}
 				alt="logo"
-				width={150}
+				width={140}
 				height={40}
 				className="object-contain cursor-pointer"
 			/>

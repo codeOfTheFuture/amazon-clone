@@ -7,9 +7,7 @@ import { Product, StripeProduct } from "@/typings";
  * @returns {StripeProduct[]} An array of StripeProduct objects, representing the transformed products.
  */
 
-export const transformToStripeFormat = (
-	products: Product[]
-): StripeProduct[] => {
+export const transformToStripeFormat = (products: Product[]): StripeProduct[] => {
 	const DOLLAR_TO_CENTS = 100;
 	const CURRENCY = "usd";
 	const QUANTITY = 1;

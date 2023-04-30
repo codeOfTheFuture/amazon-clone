@@ -13,7 +13,7 @@ interface Props {
 	product: Product;
 }
 
-const Product = ({ product }: Props) => {
+const Product = ({ product }: Props): JSX.Element => {
 	const hasPrime = Math.random() < 0.5;
 
 	const dispatch = useAppDispatch();
@@ -29,9 +29,7 @@ const Product = ({ product }: Props) => {
 			data-testid="product"
 			role="product"
 		>
-			<p className="absolute top-2 right-2 text-xs italic text-gray-400">
-				{product.category}
-			</p>
+			<p className="absolute top-2 right-2 text-xs italic text-gray-400">{product.category}</p>
 
 			<Image
 				src={product.image}
@@ -51,21 +49,12 @@ const Product = ({ product }: Props) => {
 
 			{hasPrime && (
 				<div className="flex items-center space-x-2 -mt-5">
-					<Image
-						src={primeTag}
-						alt="Prime Tag"
-						width={48}
-						height={10}
-						className="object-contain"
-					/>
+					<Image src={primeTag} alt="Prime Tag" width={48} height={10} className="object-contain" />
 					<p className="text-xs text-gray-500">FREE Next-day Delivery</p>
 				</div>
 			)}
 
-			<Button
-				className="button button-active-color mt-auto"
-				onClick={addItemToBasket}
-			>
+			<Button className="button button-active-color mt-auto" onClick={addItemToBasket}>
 				Add to Basket
 			</Button>
 		</div>

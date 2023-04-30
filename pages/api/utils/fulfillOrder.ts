@@ -42,5 +42,6 @@ export const fulfillOrder = async (session: SessionType): Promise<FulfillmentRes
 		return result;
 	} catch (error: any) {
 		console.error("ERROR:", error.statusCode, error.message);
+		throw new Error(error.message);
 	}
 };
