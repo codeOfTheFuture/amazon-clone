@@ -11,18 +11,18 @@ const SUCCESS_URL = `${process.env.HOST}/success`;
 const CANCEL_URL = `${process.env.HOST}/checkout`;
 
 interface RequestBody {
-	selectedProducts: Product[];
+	basketItems: Product[];
 	email: string;
 }
 
 const checkoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method === "POST") {
-		const { selectedProducts, email } = req.body as RequestBody;
+		const { basketItems, email } = req.body as RequestBody;
 
-		const stripeProducts = transformToStripeFormat(selectedProducts);
+		const stripeProducts = transformToStripeFormat(basketItems);
 
 		const productImages = JSON.stringify(
-			selectedProducts.map((product: Product) => product.image)
+			basketItems.map((product: Product) => product.image)
 		);
 
 		try {
@@ -50,7 +50,6 @@ const checkoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
 
 			res.status(200).json({ id: session.id });
 		} catch (error: any) {
-			console.error("Error message: ", error.message);
 			res.status(error.statusCode || 500).json(error.message);
 		}
 	}

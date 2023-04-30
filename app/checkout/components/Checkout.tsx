@@ -11,13 +11,11 @@ const stripePromise = loadStripe(process.env.stripe_public_key!);
 const Checkout = () => {
 	const email = useSession().data?.user?.email;
 	const sessionStatus = useSession().status;
-	const selectedProducts = useAppSelector(selectItems);
+	const basketItems = useAppSelector(selectItems);
 	const total = useAppSelector(selectTotal);
 
 	const createCheckoutSession = async () => {
 		if (sessionStatus === "authenticated") {
-			console.log("Checkout session client");
-
 			try {
 				const stripe = await stripePromise;
 
@@ -27,7 +25,7 @@ const Checkout = () => {
 						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
-						selectedProducts,
+						basketItems,
 						email,
 					}),
 				});
@@ -49,10 +47,10 @@ const Checkout = () => {
 
 	return (
 		<div className="flex flex-col bg-white p-10 shadow-md">
-			{selectedProducts.length > 0 && (
+			{basketItems.length > 0 && (
 				<>
 					<h2 className="whitespace-nowrap">
-						Subtotal ({selectedProducts.length} items):
+						Subtotal ({basketItems.length} items):
 						<span className="font-bold ml-2">{formatCurrency(total)}</span>
 					</h2>
 

@@ -2,12 +2,18 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
 const AuthLinks = () => {
-	const { data: session } = useSession();
+	const { data: session, status } = useSession();
 
 	return (
 		<>
 			<div onClick={() => (session ? signOut() : signIn())} className="link">
-				<p>{`Hello, ${session ? session.user?.name : "sign in"}`}</p>
+				<p>{`Hello, ${
+					status === "authenticated"
+						? session.user?.name
+						: status === "unauthenticated"
+						? "sign in"
+						: ""
+				}`}</p>
 				<p className="font-extrabold md:text-sm">Account & Lists</p>
 			</div>
 			<div className="link">
