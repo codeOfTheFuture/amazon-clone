@@ -5,8 +5,8 @@ import { Product } from "@/typings";
 
 const ENDPOINT = "https://fakestoreapi.com/products";
 
-const HomePage = async () => {
-	const response = await fetch(ENDPOINT);
+const HomePage = async (): Promise<JSX.Element> => {
+	const response: Response = await fetch(ENDPOINT);
 	const products: Product[] = await response.json();
 
 	return (

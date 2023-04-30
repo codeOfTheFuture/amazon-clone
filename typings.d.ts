@@ -1,3 +1,15 @@
+import Stripe from "stripe";
+
+interface StripeOrder {
+	id: string;
+	amount: number;
+	amountShipping: number;
+	images: string[];
+	timestamp: number;
+	items: Stripe.LineItem[];
+	quantity: number;
+}
+
 export interface Product {
 	id: number;
 	uuid: string;

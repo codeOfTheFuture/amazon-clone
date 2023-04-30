@@ -1,14 +1,6 @@
-import admin, { ServiceAccount } from "firebase-admin";
-import serviceAccount from "@/permissions.json";
+import admin from "firebase-admin";
 import Stripe from "stripe";
-
-type App = admin.app.App;
-
-const app: App = !admin.apps.length
-	? admin.initializeApp({
-			credential: admin.credential.cert(serviceAccount as ServiceAccount),
-	  })
-	: admin.app();
+import db from "@/firebase";
 
 const CENTS_TO_DOLLARS = 100;
 
@@ -31,15 +23,12 @@ type FulfillmentResult = admin.firestore.WriteResult | undefined;
  */
 
 export const fulfillOrder = async (session: SessionType): Promise<FulfillmentResult> => {
-	console.log("Fulfilling order", session);
-
 	const METADATA: Stripe.Metadata = session.metadata as Stripe.Metadata;
 	const AMOUNT_TOTAL: number = session.amount_total as number;
 	const AMOUNT_SHIPPING: number = session.total_details?.amount_shipping as number;
 
 	try {
-		const result: FulfillmentResult = await app
-			.firestore()
+		const result: FulfillmentResult = await db
 			.collection(USER_COLLECTION)
 			.doc(METADATA.email)
 			.collection(ORDERS_COLLECTION)
@@ -47,12 +36,9 @@ export const fulfillOrder = async (session: SessionType): Promise<FulfillmentRes
 			.set({
 				amount: AMOUNT_TOTAL / CENTS_TO_DOLLARS,
 				amount_shipping: AMOUNT_SHIPPING / CENTS_TO_DOLLARS,
-				images: JSON.parse(METADATA.images),
+				images: JSON.parse(METADATA.images) as string[],
 				timestamp: admin.firestore.FieldValue.serverTimestamp(),
 			});
-
-		console.log(`SUCCESS: Order ${session.id} has been added to the DB`);
-
 		return result;
 	} catch (error: any) {
 		console.error("ERROR:", error.statusCode, error.message);
