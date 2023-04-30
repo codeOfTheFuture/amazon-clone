@@ -1,6 +1,6 @@
 import Stripe from "stripe";
 
-interface StripeOrder {
+export interface StripeOrder {
 	id: string;
 	amount: number;
 	amountShipping: number;
