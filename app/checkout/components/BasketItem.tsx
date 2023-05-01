@@ -29,13 +29,15 @@ const BasketItem = ({ product }: Props) => {
 
 	return (
 		<div className="grid grid-cols-5">
-			<Image
-				src={image}
-				width={200}
-				height={200}
-				className="object-contain"
-				alt={`Item: ${title}`}
-			/>
+			<div className="relative w-52 h-52">
+				<Image
+					src={image}
+					className="object-contain"
+					alt={`Item: ${title}`}
+					fill
+					sizes="(min-width: 1024px) 20vw, (min-width: 768px) 35vw, 50vw"
+				/>
+			</div>
 
 			<div className="col-span-3 mx-5">
 				<p>{title}</p>

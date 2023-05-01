@@ -20,7 +20,7 @@ const Banner = (): JSX.Element => {
 				interval={5000}
 			>
 				<div>
-					<Image src={bannerImage_1} alt="Banner Image 1" />
+					<Image src={bannerImage_1} alt="Banner Image 1" priority />
 				</div>
 				<div>
 					<Image src={bannerImage_2} alt="Banner Image 2" />

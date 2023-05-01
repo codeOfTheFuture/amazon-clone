@@ -39,7 +39,13 @@ const Order = ({ order }: Props): JSX.Element => {
 				<div className="flex space-x-6 overflow-x-auto">
 					{images.map(image => (
 						<div key={crypto.randomUUID()} className="relative flex w-16 h-20 sm:w-28 sm:h-32">
-							<Image src={image} alt="Product Image" className="object-contain" fill />
+							<Image
+								src={image}
+								alt="Product Image"
+								className="object-contain"
+								fill
+								sizes="(min-width: 1024px) 10vw, (min-width: 768px) 15vw, 20vw"
+							/>
 						</div>
 					))}
 				</div>
