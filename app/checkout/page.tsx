@@ -1,18 +1,21 @@
-import Header from "@/components/header/Header";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Image from "next/image";
-
-import primeDayBanner from "@/assets/prime-day-banner.webp";
+import Header from "@/components/header/Header";
 import CheckoutHeading from "@/app/checkout/components/CheckoutHeading";
 import BasketItems from "@/app/checkout/components/BasketItems";
 import Checkout from "@/app/checkout/components/Checkout";
 
-const CheckoutPage = () => {
+import primeDayBanner from "@/assets/prime-day-banner.webp";
+
+const CheckoutPage = async () => {
+	const session = await getServerSession(authOptions);
+
 	return (
 		<div className="bg-gray-100">
-			<Header />
+			<Header session={session} />
 
 			<main className="lg:flex max-w-screen-2xl mx-auto">
-				{/* Left */}
 				<div className="flex-grow m-5 shadow-sm">
 					<Image
 						src={primeDayBanner}
@@ -24,7 +27,6 @@ const CheckoutPage = () => {
 
 					<div className="flex flex-col p-5 space-y-10 bg-white">
 						<CheckoutHeading />
-
 						<BasketItems />
 					</div>
 				</div>

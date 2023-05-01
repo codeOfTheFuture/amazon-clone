@@ -1,6 +1,6 @@
 import { MenuIcon } from "@heroicons/react/outline";
 
-const NavLinks = () => {
+const NavLinks = (): JSX.Element => {
 	return (
 		<nav className="flex items-center space-x-3 p-2 pl-6 bg-amazon_blue-light text-white text-sm">
 			<p className="link flex items-center">

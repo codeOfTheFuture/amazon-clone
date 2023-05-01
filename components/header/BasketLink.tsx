@@ -4,11 +4,11 @@ import { selectItems } from "@/redux/slices/basketSlice";
 import { ShoppingCartIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 
-const Basket = () => {
+const BasketLink = (): JSX.Element => {
 	const items = useAppSelector(selectItems);
 
 	return (
-		<Link className="relative link flex items-center" href="/checkout">
+		<Link className="relative link flex items-center" href="/checkout" role="link">
 			<span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 text-center rounded-full text-black font-bold">
 				{items.length}
 			</span>
@@ -19,4 +19,4 @@ const Basket = () => {
 	);
 };
 
-export default Basket;
+export default BasketLink;

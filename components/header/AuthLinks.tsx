@@ -1,19 +1,23 @@
 "use client";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { Session } from "next-auth";
+import { signIn, signOut } from "next-auth/react";
+import Link from "next/link";
 
-const AuthLinks = () => {
-	const { data: session } = useSession();
+interface Props {
+	session: Session | null;
+}
 
+const AuthLinks = ({ session }: Props): JSX.Element => {
 	return (
 		<>
 			<div onClick={() => (session ? signOut() : signIn())} className="link">
-				<p>{`Hello, ${session ? session.user?.name : "sign in"}`}</p>
+				<p>{`Hello, ${session ? session.user?.name : "Sign In"}`}</p>
 				<p className="font-extrabold md:text-sm">Account & Lists</p>
 			</div>
-			<div className="link">
+			<Link href="/orders" className="link">
 				<p>Returns</p>
 				<p className="font-extrabold md:text-sm">& Orders</p>
-			</div>
+			</Link>
 		</>
 	);
 };

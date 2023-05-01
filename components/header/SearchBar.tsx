@@ -1,6 +1,6 @@
 import { SearchIcon } from "@heroicons/react/outline";
 
-const SearchBar = () => {
+const SearchBar = (): JSX.Element => {
 	return (
 		<div className="hidden md:flex items-center h-10 rounded-md flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500">
 			<input

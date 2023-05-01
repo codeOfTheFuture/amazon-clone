@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Product } from "@/typings";
+import { Product } from "@/types/typings";
 import ProductRating from "@/components/ProductRating";
 import { formatCurrency } from "@/utils/formatCurrency";
 import { addToBasket, removeFromBasket } from "@/redux/slices/basketSlice";
@@ -29,13 +29,15 @@ const BasketItem = ({ product }: Props) => {
 
 	return (
 		<div className="grid grid-cols-5">
-			<Image
-				src={image}
-				width={200}
-				height={200}
-				className="object-contain"
-				alt={`Item: ${title}`}
-			/>
+			<div className="relative w-52 h-52">
+				<Image
+					src={image}
+					className="object-contain"
+					alt={`Item: ${title}`}
+					fill
+					sizes="(min-width: 1024px) 20vw, (min-width: 768px) 35vw, 50vw"
+				/>
+			</div>
 
 			<div className="col-span-3 mx-5">
 				<p>{title}</p>
@@ -61,16 +63,10 @@ const BasketItem = ({ product }: Props) => {
 			</div>
 
 			<div className="flex flex-col justify-end space-y-2 my-auto">
-				<Button
-					className="button button-active-color mt-auto"
-					onClick={addItemToBasket}
-				>
+				<Button className="button button-active-color mt-auto" onClick={addItemToBasket}>
 					Add to Basket
 				</Button>
-				<Button
-					className="button button-active-color mt-auto"
-					onClick={removeItemFromBasket}
-				>
+				<Button className="button button-active-color mt-auto" onClick={removeItemFromBasket}>
 					Remove from Basket
 				</Button>
 			</div>

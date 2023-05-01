@@ -28,8 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "firebase.js",
-    "firebase.js",
+    "firebase.ts",
+    "firebase.ts",
     "./jest.setup.ts"
   ],
   "exclude": ["node_modules"]
