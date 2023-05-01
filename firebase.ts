@@ -1,8 +1,7 @@
 import admin, { ServiceAccount } from "firebase-admin";
 import serviceAccount from "@/permissions.json";
 
-const PRODUCTION_ENV: boolean =
-	process.env.NODE_ENV === "production" || process.env.NODE_ENV === "development";
+const PRODUCTION_ENV: boolean = process.env.NODE_ENV !== "test";
 const FIREBASE_CONFIG: admin.ServiceAccount = process.env.FIREBASE_CONFIG as ServiceAccount;
 
 type App = admin.app.App;
