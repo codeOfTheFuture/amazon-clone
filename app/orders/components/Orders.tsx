@@ -1,4 +1,4 @@
-import { StripeOrder } from "@/typings";
+import { StripeOrder } from "@/types/typings";
 import Order from "@/app/orders/components/Order";
 
 interface Props {

@@ -1,3 +1,5 @@
+import { Session } from "next-auth";
+import { JWT } from "next-auth/jwt";
 import Stripe from "stripe";
 
 export interface StripeOrder {

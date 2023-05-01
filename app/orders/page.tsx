@@ -4,7 +4,7 @@ import { Session } from "next-auth";
 import Header from "@/components/header/Header";
 import Orders from "@/app/orders/components/Orders";
 import { getStripeOrders } from "@/utils/getStripeOrders";
-import { StripeOrder } from "@/typings";
+import { StripeOrder } from "@/types/typings";
 
 const OrdersPage = async (): Promise<JSX.Element> => {
 	const session: Session | null = await getServerSession(authOptions);

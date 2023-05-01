@@ -1,7 +1,7 @@
 import db from "@/firebase";
 import Stripe from "stripe";
 import moment from "moment";
-import { StripeOrder } from "@/typings";
+import { StripeOrder } from "@/types/typings";
 
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY!;
 const API_VERSION = "2022-11-15";

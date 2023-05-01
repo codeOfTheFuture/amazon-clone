@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Product } from "@/typings";
+import { Product } from "@/types/typings";
 import { formatCurrency } from "@/utils/formatCurrency";
 import Button from "@/components/ButtonWrapper";
 import ProductRating from "@/components/ProductRating";

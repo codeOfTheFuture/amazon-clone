@@ -1,4 +1,4 @@
-import { StripeOrder } from "@/typings";
+import { StripeOrder } from "@/types/typings";
 import { formatCurrency } from "@/utils/formatCurrency";
 import moment from "moment";
 import Image from "next/image";

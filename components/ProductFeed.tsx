@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Product as ProductType } from "@/typings";
+import { Product as ProductType } from "@/types/typings";
 import Product from "@/components/Product";
 import ProductFeedImage from "@/assets/product-feed-image.jpg";
 import crypto from "crypto";

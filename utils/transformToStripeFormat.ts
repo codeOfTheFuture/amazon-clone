@@ -1,4 +1,4 @@
-import { Product, StripeProduct } from "@/typings";
+import { Product, StripeProduct } from "@/types/typings";
 
 /**
  * Transforms an array of Product objects into a format suitable for use with Stripe API.

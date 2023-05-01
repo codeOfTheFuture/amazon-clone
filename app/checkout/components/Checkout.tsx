@@ -9,7 +9,8 @@ import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(process.env.stripe_public_key!);
 
 const Checkout = () => {
-	const email = useSession().data?.user?.email;
+	const email = useSession().data?.user.email;
+	const accessToken = useSession().data?.user.token!;
 	const sessionStatus = useSession().status;
 	const basketItems = useAppSelector(selectItems);
 	const total = useAppSelector(selectTotal);
@@ -23,6 +24,7 @@ const Checkout = () => {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
+						Authorization: accessToken,
 					},
 					body: JSON.stringify({
 						basketItems,
@@ -56,15 +58,11 @@ const Checkout = () => {
 
 					<Button
 						className={`button mt-2 ${
-							sessionStatus === "authenticated"
-								? "button-active-color"
-								: "button-disabled-color"
+							sessionStatus === "authenticated" ? "button-active-color" : "button-disabled-color"
 						}`}
 						onClick={createCheckoutSession}
 					>
-						{sessionStatus === "authenticated"
-							? "Proceed to checkout"
-							: "Sign in to checkout"}
+						{sessionStatus === "authenticated" ? "Proceed to checkout" : "Sign in to checkout"}
 					</Button>
 				</>
 			)}

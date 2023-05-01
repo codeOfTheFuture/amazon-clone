@@ -1,7 +1,8 @@
-import { transformToStripeFormat } from "@/utils/transformToStripeFormat";
 import { NextApiRequest, NextApiResponse } from "next";
 import stripe from "stripe";
-import { Product } from "@/typings";
+import { getToken, decode } from "next-auth/jwt";
+import { transformToStripeFormat } from "@/utils/transformToStripeFormat";
+import { Product } from "@/types/typings";
 
 const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY!;
 const API_VERSION = "2022-11-15";
@@ -10,20 +11,27 @@ const SHIPPING_RATE = "shr_1N24LcJ6McfLlfvXQGBJ7cP6";
 const SUCCESS_URL = `${process.env.HOST}/success`;
 const CANCEL_URL = `${process.env.HOST}/checkout`;
 
+const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET!;
+
 interface RequestBody {
 	basketItems: Product[];
 	email: string;
 }
 
-const checkoutSession = async (req: NextApiRequest, res: NextApiResponse) => {
+const checkoutSession = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+	const token = await getToken({ req, secret: NEXTAUTH_SECRET });
+	token;
+
+	if (!token) {
+		return res.status(401).json({ message: "Unauthorized" });
+	}
+
 	if (req.method === "POST") {
 		const { basketItems, email } = req.body as RequestBody;
 
 		const stripeProducts = transformToStripeFormat(basketItems);
 
-		const productImages = JSON.stringify(
-			basketItems.map((product: Product) => product.image)
-		);
+		const productImages = JSON.stringify(basketItems.map((product: Product) => product.image));
 
 		try {
 			const session = await new stripe(STRIPE_SECRET_KEY, {

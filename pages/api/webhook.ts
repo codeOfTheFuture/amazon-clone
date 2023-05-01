@@ -41,8 +41,10 @@ const webhook = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
 				console.log(`🔔  Webhook received: ${session.object} ${session.status}!`);
 				console.log("💰 Payment captured!");
 
-				await fulfillOrder(session);
-				res.status(200);
+				const fulFilledOrder = await fulfillOrder(session);
+
+				if (fulFilledOrder) res.status(200);
+				else res.status(500);
 			}
 		}
 	}

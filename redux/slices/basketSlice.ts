@@ -1,4 +1,4 @@
-import { Product } from "@/typings";
+import { Product } from "@/types/typings";
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../store";
 

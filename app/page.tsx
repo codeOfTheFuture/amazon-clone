@@ -3,7 +3,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Banner from "@/components/Banner";
 import Header from "@/components/header/Header";
 import ProductFeed from "@/components/ProductFeed";
-import { Product } from "@/typings";
+import { Product } from "@/types/typings";
 
 const ENDPOINT = "https://fakestoreapi.com/products";
 
