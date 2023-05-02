@@ -3,7 +3,7 @@ import { Provider } from "@/redux/provider";
 import { ReactNode } from "react";
 
 import { Open_Sans } from "next/font/google";
-import "@/globals.css";
+import "@/styles/globals.css";
 
 const openSans = Open_Sans({
 	weight: "400",
