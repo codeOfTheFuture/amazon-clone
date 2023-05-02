@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import stripe from "stripe";
-import { getToken, decode } from "next-auth/jwt";
+import { getToken } from "next-auth/jwt";
 import { transformToStripeFormat } from "@/utils/transformToStripeFormat";
 import { Product } from "@/types/typings";
 
